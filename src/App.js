@@ -1,14 +1,16 @@
+/* Dependencies */
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+/* Stylesheets */
 import './App.css';
+/* Components */
+import Sidebar from './components/Sidebar'
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
-          
-        </header>
+        <Sidebar />
       </div>
     </Router>
   );
