@@ -10,9 +10,17 @@ import Create from './components/Create/Create'
 import Project from './components/Project/Project'
 import UserProjects from './components/UserProjects/UserProjects'
 
+const axios = require('axios').default
+
 class App extends React.Component {
   async componentDidMount() {
-    
+    try {
+      const projects = await axios.get('http://projects-absurdlyeloquent.herokuapp.com/projects')
+      console.log(projects)
+    }
+    catch (err) {
+      console.error(err)
+    }
   }
   render() {
     return (
