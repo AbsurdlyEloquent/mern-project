@@ -5,21 +5,30 @@ import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import './App.css';
 /* Components */
 import Sidebar from './components/Sidebar/Sidebar'
+import Home from './components/Home/Home'
+import Create from './components/Create/Create'
+import Project from './components/Project/Project'
+import UserProjects from './components/UserProjects/UserProjects'
 
-function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Sidebar />
-        <Switch>
-          <Route exact path="/" component="Home" />
-          <Route path="/new" component="Create"/>
-          <Route path="/project" component="Project" />
-          <Route path="/myprojects" component="UserProjects" />
-        </Switch>
-      </div>
-    </Router>
-  );
+class App extends React.Component {
+  async componentDidMount() {
+    
+  }
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Sidebar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/new" component={Create} />
+            <Route path="/project" component={Project} />
+            <Route path="/myprojects" component={UserProjects} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
