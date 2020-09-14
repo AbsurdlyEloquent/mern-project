@@ -13,23 +13,31 @@ import UserProjects from './components/UserProjects/UserProjects'
 const axios = require('axios').default
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      projects: null
+    }
+  }
   async componentDidMount() {
     try {
       // !! CHANGE TO 'https://projects-absurdlyeloquent.herokuapp.com/projects' BEFORE DEPLOY !!
       const projects = await axios.get('http://lvh.me:3002/projects')
-      console.log(projects)
+      this.setState({ projects: projects.data })
     }
     catch (err) {
       console.error(err)
     }
   }
   render() {
+    if (this.state.projects) {
     return (
       <Router>
         <div className="App">
           <Sidebar />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={()=> (<Home projects={this.state.projects}/>) } />
             <Route path="/new" component={Create} />
             <Route path="/project" component={Project} />
             <Route path="/myprojects" component={UserProjects} />
@@ -37,6 +45,15 @@ class App extends React.Component {
         </div>
       </Router>
     );
+  } else {
+    return (
+      <Router>
+        <div> className="App">
+          <Sidebar />
+        </div>
+      </Router>
+    )
+  }
   }
 }
 
