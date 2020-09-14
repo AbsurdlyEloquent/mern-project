@@ -8,6 +8,7 @@ class Home extends React.Component {
     this.state = {
       projects: this.props.projects
     }
+    this.expand = this.expand.bind(this)
   }
   render() {
     return (
@@ -17,7 +18,18 @@ class Home extends React.Component {
           { /* JS */
             this.state.projects.map((item, i) => {
               return (
-                <li key={i} index={i}><button onClick={this.expand}>{item.name}</button></li>
+                <li key={item['_id']} index={i}>
+                  <button onClick={this.expand}>{item.name}</button>
+                  <ul className='contents'>
+                    <li>{item.description}</li>
+                    <li>Private: {item.private}</li>
+                    <li>Owner: <a href={item.owner.url}>AbsurdlyEloquent</a></li>
+                    <li><a href={item.url}>Repository</a></li>
+                    <li><a href={item.homepage}>Deployed</a></li>
+                    <li>Language: {item.language}</li>
+                    <li>Framework: {item.framework}</li>
+                  </ul>
+                </li>
               )
             })
             /* JS */ }
@@ -27,8 +39,7 @@ class Home extends React.Component {
     )
   }
   expand(e) {
-    let i = e.target.parentElement.getAttribute('index')
-    console.log(i)
+
   }
 }
 
