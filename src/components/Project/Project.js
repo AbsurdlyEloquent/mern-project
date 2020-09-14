@@ -15,18 +15,34 @@ class Project extends React.Component {
   async componentDidMount() {
     try {
       // !! CHANGE TO 'https://projects-absurdlyeloquent.herokuapp.com/projects' BEFORE DEPLOY !!
-      const project = await axios.get(`http://lvh.me:3002/projects/${this.state.id}`)
-      console.log(project)
-      this.setState({ project: project })
+      const res = await axios.get(`http://lvh.me:3002/projects/${this.state.id}`)
+      this.setState({ project: res.data })
     }
     catch (err) {
       console.error(err)
     }
   }
   render() {
-    return (
-      <div></div>
-    )
+    // without this if,
+    // the component will throw an error before the promise is finished
+    if (this.state.project) {
+      return (
+        <div className="project-edit">
+          <form>
+            <label htmlFor="name">Name:</label>
+            <input id="name" type="text" defaultValue={this.state.project.name} />
+            <label htmlFor="desc">Description:</label>
+            <input id="desc" type="text" defaultValue={this.state.project.description} />
+            <label htmlFor="url">URL:</label>
+            <input id="url" type="text" defaultValue={this.state.project.url} />
+          </form>
+        </div>
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 }
 

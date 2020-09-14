@@ -1,8 +1,8 @@
 /* dependencies */
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Home.css'
 
+import './Home.css'
 
 class Home extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class Home extends React.Component {
                   <input type="checkbox" className="toggle" id={`toggle${i}`}/>
                   <ul className='contents'>
                     <li>{item.description}</li>
-                    <li>Private: {item.private}</li>
+                    <li>Private: {item.private.toString()}</li>
                     <li>Owner: <a href={item.owner.url}>AbsurdlyEloquent</a></li>
                     <li><a href={item.url}>Repository</a></li>
                     <li><a href={item.homepage}>Deployed</a></li>
