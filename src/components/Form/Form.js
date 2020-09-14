@@ -3,11 +3,11 @@ import React from 'react'
 class Form extends React.Component {
   constructor(props) {
     super(props)
-
     if (this.props.project) {
       this.state = {
         project: this.props.project,
-        newProject: {}
+        newProject: {},
+        isPrivate: this.props.project.private
       }
     } else {
       this.state = {
@@ -17,6 +17,7 @@ class Form extends React.Component {
     }
     this.changeHandler = this.changeHandler.bind(this)
     this.resetHandler = this.resetHandler.bind(this)
+    this.radioHandler = this.radioHandler.bind(this)
   }
   render() {
     return (
@@ -35,9 +36,9 @@ class Form extends React.Component {
           <label htmlFor="framwork">Framework:</label>
         <input id="framwork" type="text" defaultValue={this.state.project.framwork} onChange={this.changeHandler} />
           <label htmlFor="private">Private:</label>
-        <input id="true" className="private" name="private" type="radio" value="true" />
+        <input id="true" className="private" type="radio" value="true" onChange={this.radioHandler} checked={this.state.isPrivate} />
           <label htmlFor="true">True</label>
-        <input id="false" className="private" name="private" type="radio" value="false" checked readOnly />
+        <input id="false" className="private" type="radio" value="false" onChange={this.radioHandler} checked={!this.state.isPrivate} />
           <label htmlFor="false">False</label>
         <input type="submit" />
         <input type="reset" />
@@ -52,6 +53,12 @@ class Form extends React.Component {
   }
   resetHandler() {
     this.setState({ newProject: {} })
+    console.log(this.state.newProject)
+  }
+  radioHandler(e) {
+    let newProject = this.state.newProject
+    newProject.private = e.target.value
+    this.setState({ newProject: newProject, isPrivate: (e.target.value === 'true') })
     console.log(this.state.newProject)
   }
 }
