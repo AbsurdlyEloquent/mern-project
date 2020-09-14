@@ -61,7 +61,9 @@ class Project extends React.Component {
     }
   }
   putHandler(e) {
-    console.log(e.target.elements[0].id+`: `+e.target.elements[0].value)
+    e.target.elements.map((item, i)=> {
+      
+    })
   }
 }
 
