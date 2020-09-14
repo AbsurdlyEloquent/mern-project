@@ -8,7 +8,6 @@ import Sidebar from './components/Sidebar/Sidebar'
 import Home from './components/Home/Home'
 import Create from './components/Create/Create'
 import Project from './components/Project/Project'
-import UserProjects from './components/UserProjects/UserProjects'
 
 const axios = require('axios').default
 

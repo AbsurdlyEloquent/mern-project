@@ -1,6 +1,8 @@
 /* dependencies */
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Home.css'
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -30,7 +32,7 @@ class Home extends React.Component {
                     <li><a href={item.homepage}>Deployed</a></li>
                     <li>Language: {item.language}</li>
                     <li>Framework: {item.framework}</li>
-                    <li><button>EDIT</button><button>DELETE</button></li>
+                    <li><Link to={`projects/${item['_id']}`}>EDIT</Link><button>DELETE</button></li>
                   </ul>
                 </li>
               )
