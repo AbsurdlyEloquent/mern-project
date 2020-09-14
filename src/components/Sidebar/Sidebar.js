@@ -11,8 +11,8 @@ class Sidebar extends React.Component {
         <aside className="sidebar">
           <h3>My Projects API</h3>
           <nav>
+          <h5>Navigation</h5>
             <ul>
-              <lh>Navigation</lh>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/new">Create</Link></li>
               <li><Link to="/myprojects">My Projects</Link></li>

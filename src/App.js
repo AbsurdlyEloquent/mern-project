@@ -15,7 +15,8 @@ const axios = require('axios').default
 class App extends React.Component {
   async componentDidMount() {
     try {
-      const projects = await axios.get('http://projects-absurdlyeloquent.herokuapp.com/projects')
+      // !! CHANGE TO 'https://projects-absurdlyeloquent.herokuapp.com/projects' BEFORE DEPLOY !!
+      const projects = await axios.get('http://lvh.me:3002/projects')
       console.log(projects)
     }
     catch (err) {
