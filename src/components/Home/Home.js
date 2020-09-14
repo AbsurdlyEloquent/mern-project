@@ -1,5 +1,6 @@
 /* dependencies */
 import React from 'react'
+import './Home.css'
 
 class Home extends React.Component {
   constructor(props) {
@@ -8,7 +9,6 @@ class Home extends React.Component {
     this.state = {
       projects: this.props.projects
     }
-    this.expand = this.expand.bind(this)
   }
   render() {
     return (
@@ -18,8 +18,10 @@ class Home extends React.Component {
           { /* JS */
             this.state.projects.map((item, i) => {
               return (
-                <li key={item['_id']} index={i}>
-                  <button onClick={this.expand}>{item.name}</button>
+                <li className="item" key={item['_id']} index={i}>
+              {/* this is the css checkbox hack to avoid an event listener */}
+                  <label htmlFor={`toggle${i}`} className="label">{item.name}</label>
+                  <input type="checkbox" className="toggle" id={`toggle${i}`}/>
                   <ul className='contents'>
                     <li>{item.description}</li>
                     <li>Private: {item.private}</li>
@@ -28,6 +30,7 @@ class Home extends React.Component {
                     <li><a href={item.homepage}>Deployed</a></li>
                     <li>Language: {item.language}</li>
                     <li>Framework: {item.framework}</li>
+                    <li><button>EDIT</button><button>DELETE</button></li>
                   </ul>
                 </li>
               )
@@ -37,9 +40,6 @@ class Home extends React.Component {
         </div>
       </main>
     )
-  }
-  expand(e) {
-
   }
 }
 

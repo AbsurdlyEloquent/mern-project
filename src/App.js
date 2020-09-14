@@ -1,6 +1,6 @@
 /* Dependencies */
 import React from 'react';
-import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 /* Stylesheets */
 import './App.css';
 /* Components */
@@ -37,10 +37,10 @@ class App extends React.Component {
         <div className="App">
           <Sidebar />
           <Switch>
-            <Route exact path="/" render={()=> (<Home projects={this.state.projects}/>) } />
-            <Route path="/new" component={Create} />
-            <Route path="/project" component={Project} />
-            <Route path="/myprojects" component={UserProjects} />
+            <Route exact path="/"><Redirect to="/projects" /></Route>
+            <Route exact path="/projects" render={()=> (<Home projects={this.state.projects}/>) } />
+            <Route path="projects/new" component={Create} />
+            <Route path="/project/:id" component={Project} />
           </Switch>
         </div>
       </Router>

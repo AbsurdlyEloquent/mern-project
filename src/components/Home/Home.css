@@ -1,0 +1,13 @@
+.toggle {
+  display: none;
+}
+.label {
+  display: inline-block;
+  cursor: pointer;
+}
+.contents {
+  display: none;
+}
+input[type=checkbox]:checked ~ .contents {
+  display: block;
+}
