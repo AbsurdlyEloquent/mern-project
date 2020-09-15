@@ -9,7 +9,7 @@ class Project extends React.Component {
     super(props)
 
     this.state = {
-      id: this.props.match.params.id,
+      id: this.props.props.match.params.id,
       project: null
     }
   }
@@ -30,7 +30,7 @@ class Project extends React.Component {
       return (
         <div className="project-edit">
           <h4>Edit Project:</h4>
-          <Form project={this.state.project} />
+          <Form project={this.state.project} request={this.props.request} method={'put'}/>
         </div>
       )
     } else {
@@ -38,9 +38,6 @@ class Project extends React.Component {
         <div></div>
       )
     }
-  }
-  putHandler(e) {
-
   }
 }
 
