@@ -23,7 +23,7 @@ class App extends React.Component {
   async componentDidMount() {
     try {
       // !! CHANGE TO 'https://projects-absurdlyeloquent.herokuapp.com/projects' BEFORE DEPLOY !!
-      const projects = await axios.get('http://lvh.me:3002/projects')
+      const projects = await axios.get('http://projects-absurdlyeloquent.herokuapp.com/projects')
       this.setState({ projects: projects.data })
       console.log('working!')
     }
@@ -61,7 +61,7 @@ class App extends React.Component {
     try {
       axios({
         method: method,
-        url: `http://lvh.me:3002/projects/${project['_id'] || ""}`,
+        url: `http://projects-absurdlyeloquent.herokuapp.com/projects/${project['_id'] || ""}`,
         data: project
       })
     }
