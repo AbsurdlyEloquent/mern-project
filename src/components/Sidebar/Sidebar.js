@@ -12,9 +12,9 @@ class Sidebar extends React.Component {
           <h3>My Projects API</h3>
           <nav>
           <h5>Navigation</h5>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/projects/new">Create</Link></li>
+            <ul id="nav">
+              <li className="nav"><Link to="/">Home</Link></li>
+              <li className="nav"><Link to="/projects/new">Create</Link></li>
             </ul>
           </nav>
         </aside>

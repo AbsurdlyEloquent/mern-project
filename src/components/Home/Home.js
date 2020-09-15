@@ -18,7 +18,7 @@ class Home extends React.Component {
     return (
       <main className="home">
         <div className="accordion">
-          <ul>
+          <ul className='list'>
           { /* JS */
             this.state.projects.map((item, i) => {
               return (
@@ -34,7 +34,7 @@ class Home extends React.Component {
                     <li><a href={item.homepage}>Deployed</a></li>
                     <li>Language: {item.language}</li>
                     <li>Framework: {item.framework}</li>
-                    <li><Link to={`projects/${item['_id']}`}>EDIT</Link><Link to={''} onClick={(e)=> this.deleteHandler(e, item._id)}>DELETE</Link></li>
+                    <li className="link"><Link to={`projects/${item['_id']}`}>EDIT</Link><Link to={''} onClick={(e)=> this.deleteHandler(e, item._id)}>DELETE</Link></li>
                   </ul>
                 </li>
               )

@@ -2,7 +2,7 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 /* Stylesheets */
-import './App.css';
+import './App.css'
 /* Components */
 import Sidebar from './components/Sidebar/Sidebar'
 import Home from './components/Home/Home'
@@ -23,7 +23,7 @@ class App extends React.Component {
   async componentDidMount() {
     try {
       // !! CHANGE TO 'https://projects-absurdlyeloquent.herokuapp.com/projects' BEFORE DEPLOY !!
-      const projects = await axios.get('https://projects-absurdlyeloquent.herokuapp.com/projects')
+      const projects = await axios.get('http://localhost:3002/projects')
       this.setState({ projects: projects.data })
       console.log('working!')
     }
@@ -35,7 +35,7 @@ class App extends React.Component {
     if (this.state.projects) {
       return (
         <Router>
-          <div className="App">
+          <div className="app">
             <Sidebar />
             <Switch>
               <Route exact path="/"><Redirect to="/projects" /></Route>
@@ -61,7 +61,7 @@ class App extends React.Component {
     try {
       axios({
         method: method,
-        url: `https://projects-absurdlyeloquent.herokuapp.com/projects/${project['_id'] || ""}`,
+        url: `http://localhost:3002/projects/${project['_id'] || ""}`,
         data: project
       })
     }
