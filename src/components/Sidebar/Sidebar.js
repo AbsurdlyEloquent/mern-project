@@ -14,7 +14,7 @@ class Sidebar extends React.Component {
           <h5>Navigation</h5>
             <ul>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/new">Create</Link></li>
+              <li><Link to="/projects/new">Create</Link></li>
             </ul>
           </nav>
         </aside>

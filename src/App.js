@@ -40,8 +40,8 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/"><Redirect to="/projects" /></Route>
               <Route exact path="/projects" render={()=> (<Home projects={this.state.projects}/>)} />
+              <Route path="/projects/new" render={()=> <Create />} />
               <Route path="/projects/:id" render={(props)=> <Project request={this.request} props={props} />} />
-              <Route path="/projects/new" component={Create} />
             </Switch>
           </div>
         </Router>
