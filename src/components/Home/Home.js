@@ -28,7 +28,7 @@ class Home extends React.Component {
                   <input type="checkbox" className="toggle" id={`toggle${i}`}/>
                   <ul className='contents'>
                     <li>{item.description}</li>
-                    <li>Private: {item.private.toString()}</li>
+                    <li>Private: {item.private}</li>
                     <li>Owner: <a href={item.owner.url}>AbsurdlyEloquent</a></li>
                     <li><a href={item.url}>Repository</a></li>
                     <li><a href={item.homepage}>Deployed</a></li>
