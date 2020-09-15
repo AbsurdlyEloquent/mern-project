@@ -47,7 +47,7 @@ class Home extends React.Component {
   }
   deleteHandler(e, id) {
     e.preventDefault()
-    axios.delete(`http://projects-absurdlyeloquent.herokuapp.com/projects/${id}`)
+    axios.delete(`https://projects-absurdlyeloquent.herokuapp.com/projects/${id}`)
   }
 }
 
