@@ -8,12 +8,13 @@ class Form extends React.Component {
       this.state = {
         project: this.props.project,
         newProject: {_id: this.props.project._id},
-        isPrivate: this.props.project.private
+        isPrivate: (this.props.project.private === 'true')
       }
     } else {
       this.state = {
         project: {},
-        newProject: {}
+        newProject: {},
+        isPrivate: false
       }
     }
     this.changeHandler = this.changeHandler.bind(this)
@@ -39,9 +40,9 @@ class Form extends React.Component {
             <label htmlFor="framwork">Framework:</label>
           <input id="framwork" type="text" defaultValue={this.state.project.framwork} onChange={this.changeHandler} />
             <label htmlFor="private">Private:</label>
-          <input id="true" className="private" type="radio" value="true" onChange={this.radioHandler} checked={this.state.isPrivate} />
+          <input id="true" className="private" type="radio" value={true} name="private" onChange={this.radioHandler} defaultChecked={this.state.isPrivate} />
             <label htmlFor="true">True</label>
-          <input id="false" className="private" type="radio" value="false" onChange={this.radioHandler} checked={!this.state.isPrivate} />
+          <input id="false" className="private" type="radio" value={false} name="private" onChange={this.radioHandler} defaultChecked={!this.state.isPrivate} />
             <label htmlFor="false">False</label>
           <input type="submit" />
           <input type="reset" />
@@ -64,7 +65,7 @@ class Form extends React.Component {
   radioHandler(e) {
     let newProject = this.state.newProject
     newProject.private = e.target.value
-    this.setState({ newProject: newProject, isPrivate: (e.target.value === 'true') })
+    this.setState({ newProject: newProject, isPrivate: e.target.value })
   }
   async submitHandler(e) {
     e.preventDefault()

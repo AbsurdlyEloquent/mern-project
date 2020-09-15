@@ -39,8 +39,8 @@ class App extends React.Component {
             <Sidebar />
             <Switch>
               <Route exact path="/"><Redirect to="/projects" /></Route>
-              <Route exact path="/projects" render={()=> (<Home projects={this.state.projects}/>)} />
-              <Route path="/projects/new" render={()=> <Create />} />
+              <Route exact path="/projects" render={()=> <Home projects={this.state.projects}/>} />
+              <Route path="/projects/new" render={()=> <Create request={this.request} />} />
               <Route path="/projects/:id" render={(props)=> <Project request={this.request} props={props} />} />
             </Switch>
           </div>
@@ -57,10 +57,11 @@ class App extends React.Component {
     }
   }
   async request(method, project) {
+    project.owner = {}
     try {
       axios({
         method: method,
-        url: `http://lvh.me:3002/projects/${project['_id']}`,
+        url: `http://lvh.me:3002/projects/${project['_id'] || ""}`,
         data: project
       })
     }

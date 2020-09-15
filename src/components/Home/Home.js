@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 import './Home.css'
 
+const axios = require('axios')
+
 class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -32,7 +34,7 @@ class Home extends React.Component {
                     <li><a href={item.homepage}>Deployed</a></li>
                     <li>Language: {item.language}</li>
                     <li>Framework: {item.framework}</li>
-                    <li><Link to={`projects/${item['_id']}`}>EDIT</Link><button>DELETE</button></li>
+                    <li><Link to={`projects/${item['_id']}`}>EDIT</Link><Link to={''} onClick={(e)=> this.deleteHandler(e, item._id)}>DELETE</Link></li>
                   </ul>
                 </li>
               )
@@ -42,6 +44,10 @@ class Home extends React.Component {
         </div>
       </main>
     )
+  }
+  deleteHandler(e, id) {
+    e.preventDefault()
+    axios.delete(`http://lvh.me:3002/projects/${id}`)
   }
 }
 
