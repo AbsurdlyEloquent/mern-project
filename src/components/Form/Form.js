@@ -13,7 +13,7 @@ class Form extends React.Component {
     } else {
       this.state = {
         project: {},
-        newProject: {},
+        newProject: {private: false},
         isPrivate: false
       }
     }
@@ -58,6 +58,7 @@ class Form extends React.Component {
     let newProject = this.state.newProject
     newProject[`${e.target.id}`] = e.target.value
     this.setState({ newProject: newProject})
+    console.log(this.state.project)
   }
   resetHandler() {
     this.setState({ newProject: {} })
