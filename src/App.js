@@ -23,7 +23,7 @@ class App extends React.Component {
   async componentDidMount() {
     try {
       // !! CHANGE TO 'https://projects-absurdlyeloquent.herokuapp.com/projects' BEFORE DEPLOY !!
-      const projects = await axios.get('http://localhost:3002/projects')
+      const projects = await axios.get('https://projects-absurdlyeloquent.herokuapp.com/projects')
       this.setState({ projects: projects.data })
       console.log('working!')
     }
